@@ -86,7 +86,7 @@ const Contact = () => {
                 />
               </svg>
               <h3 className="font-body text-sm tracking-widest uppercase">Email</h3>
-              <p className="font-script text-lg">contact@naresh.com</p>
+              <p className="font-script text-lg">contact@sminkup.com</p>
             </div>
 
             <div className="flex flex-col items-center gap-3 p-6 border border-primary-foreground/20 rounded-lg hover:border-primary-foreground/40 transition-colors duration-300">

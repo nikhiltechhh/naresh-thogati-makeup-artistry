@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "./Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
     { name: "Services", href: "/#services" },
-    { name: "Gallery", href: "/#gallery" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Contact", href: "/#contact" },
   ];
@@ -44,8 +45,8 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-soft py-3"
-          : "bg-transparent py-6"
+          ? "bg-background/95 backdrop-blur-md shadow-soft py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12">
@@ -53,12 +54,13 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="logo-text hover:opacity-80 transition-opacity duration-300"
+            className="transition-opacity duration-300 hover:opacity-80"
           >
-            Naresh
-            <span className="text-base align-top ml-1 not-italic font-body tracking-widest text-muted-foreground">
-              MAKEUP
-            </span>
+            <Logo 
+              className={`transition-all duration-300 ${
+                isScrolled ? "h-10 md:h-12" : "h-12 md:h-14"
+              }`}
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,17 +98,17 @@ const Header = () => {
           >
             <span
               className={`block w-6 h-[2px] bg-primary transition-all duration-300 ease-smooth ${
-                isMenuOpen ? "rotate-45 translate-y-[1px]" : "-translate-y-1"
+                isMenuOpen ? "rotate-45 translate-y-[1px]" : "-translate-y-1.5"
               }`}
             />
             <span
-              className={`block w-4 h-[2px] bg-primary transition-all duration-300 ease-smooth ${
-                isMenuOpen ? "opacity-0 scale-0" : "opacity-100"
+              className={`block h-[2px] bg-primary transition-all duration-300 ease-smooth ${
+                isMenuOpen ? "opacity-0 w-0" : "opacity-100 w-3"
               }`}
             />
             <span
               className={`block w-6 h-[2px] bg-primary transition-all duration-300 ease-smooth ${
-                isMenuOpen ? "-rotate-45 -translate-y-[1px]" : "translate-y-1"
+                isMenuOpen ? "-rotate-45 -translate-y-[1px]" : "translate-y-1.5"
               }`}
             />
           </button>
@@ -122,7 +124,9 @@ const Header = () => {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full">
-          <ul className="flex flex-col items-center gap-8">
+          {/* Logo in mobile menu */}
+          <Logo className="h-16 mb-8" />
+          <ul className="flex flex-col items-center gap-6">
             {navLinks.map((link, index) => (
               <li
                 key={link.name}
@@ -140,14 +144,14 @@ const Header = () => {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
-                    className="font-display text-3xl text-foreground hover:text-primary transition-colors duration-300"
+                    className="font-display text-2xl text-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
                   </a>
                 ) : (
                   <Link
                     to={link.href}
-                    className="font-display text-3xl text-foreground hover:text-primary transition-colors duration-300"
+                    className="font-display text-2xl text-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
                   </Link>

@@ -1,84 +1,56 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-interface GalleryProps {
+interface GalleryPageProps {
   images: string[];
 }
 
-const Gallery = ({ images }: GalleryProps) => {
+const GalleryPage = ({ images }: GalleryPageProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
-  // Show only first 6 images on homepage
-  const displayImages = images.slice(0, 6);
-
   return (
-    <>
-      <section
-        id="gallery"
-        ref={sectionRef}
-        className="py-24 lg:py-32 bg-background"
-      >
+    <div className="min-h-screen bg-background">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 bg-secondary/30">
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Section Header */}
           <div
-            className={`mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6 transition-all duration-700 ${
+            className={`max-w-3xl transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div>
-              <p className="section-subtitle">PORTFOLIO</p>
-              <h2 className="section-title">Our Gallery</h2>
-            </div>
-            <Link
-              to="/gallery"
-              className="group inline-flex items-center gap-3 font-body text-sm tracking-widest uppercase text-primary hover:text-accent transition-colors duration-300"
-            >
-              View All
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
+            <p className="section-subtitle">PORTFOLIO</p>
+            <h1 className="section-title mb-6">Our Gallery</h1>
+            <p className="body-italic">
+              Explore our complete collection of makeup artistry. From bridal 
+              transformations to editorial shoots, each image showcases our 
+              dedication to beauty and craftsmanship.
+            </p>
           </div>
+        </div>
+      </section>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {displayImages.map((image, index) => (
+      {/* Gallery Grid */}
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {images.map((image, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImage(image)}
                 className={`group relative overflow-hidden rounded-lg cursor-pointer aspect-square transition-all duration-700 ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                 }`}
-                style={{ transitionDelay: `${0.05 + index * 0.08}s` }}
+                style={{ transitionDelay: `${0.03 + index * 0.05}s` }}
               >
                 <img
                   src={image}
@@ -108,35 +80,10 @@ const Gallery = ({ images }: GalleryProps) => {
               </div>
             ))}
           </div>
-
-          {/* View More Button */}
-          <div
-            className={`mt-12 text-center transition-all duration-700 delay-500 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <Link
-              to="/gallery"
-              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-widest uppercase transition-all duration-500 hover:bg-primary/90 hover:shadow-elegant"
-            >
-              View More
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </div>
         </div>
       </section>
+
+      <Footer />
 
       {/* Lightbox */}
       {selectedImage && (
@@ -170,8 +117,8 @@ const Gallery = ({ images }: GalleryProps) => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default Gallery;
+export default GalleryPage;
