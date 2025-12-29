@@ -36,7 +36,7 @@ const Hero = ({ heroImage }: HeroProps) => {
               <h1 className="hero-title">
                 Naresh Thogati
               </h1>
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary/80 font-light">
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary font-light">
                 Makeup & Hair Stylist
               </h2>
             </div>
