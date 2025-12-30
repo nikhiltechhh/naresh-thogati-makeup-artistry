@@ -3,7 +3,10 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Gallery from "@/components/Gallery";
-import Portfolio from "@/components/Portfolio";
+// import Portfolio from "@/components/Portfolio";
+import Video from "@/components/Video";
+import Specialization from "@/components/Specialization"
+import Choose from "@/components/Choose"
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -80,9 +83,13 @@ const Index = () => {
           aboutImage2={about2}
           aboutImage3={about3}
         />
-        <Services services={services} />
-        <Gallery images={galleryImages} />
-        <Portfolio items={portfolioItems} />
+        <Specialization />
+       
+        <Services />
+         <Choose />
+        <Gallery />
+        <Video />
+        {/* <Portfolio items={portfolioItems} /> */}
         <Contact />
       </main>
       <Footer />

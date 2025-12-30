@@ -25,27 +25,20 @@ import about3 from "@/assets/about-3.jpg";
 
 const GalleryPageWrapper = () => {
   const allImages = [
-    gallery1,
-    gallery2,
-    gallery3,
-    gallery4,
-    gallery5,
-    gallery6,
-    serviceBridal,
-    serviceParty,
-    serviceCinematic,
-    serviceHalfsaree,
-    serviceModel,
-    serviceFashion,
-    portfolio1,
-    portfolio2,
-    portfolio3,
-    portfolio4,
-    portfolio5,
-    portfolio6,
-    aboutMain,
-    about2,
-    about3,
+      "https://i.ibb.co/Mkv59w8D/Whats-App-Image-2025-12-29-at-4-25-18-PM.jpg",
+  "https://i.ibb.co/5hFV4JWm/Smink-Up-WV-Add.jpg",
+  "https://i.ibb.co/XRCjvqC/Whats-App-Image-2025-12-29-at-4-25-18-PM-1.jpg",
+  "https://i.ibb.co/MDzNSTrG/Whats-App-Image-2025-12-29-at-4-22-42-PM.jpg",
+  "https://i.ibb.co/FbKYyYfD/Whats-App-Image-2025-12-29-at-4-22-40-PM-1.jpg",
+  "https://i.ibb.co/6JZr9WrN/Whats-App-Image-2025-12-29-at-4-25-17-PM.jpg",
+    "https://i.ibb.co/KpMKt7nH/Whats-App-Image-2025-12-29-at-4-22-38-PM-1.jpg",
+    "https://i.ibb.co/5hZDDkpK/Whats-App-Image-2025-12-29-at-4-25-19-PM.jpg",
+    "https://i.ibb.co/MDzNSTrG/Whats-App-Image-2025-12-29-at-4-22-42-PM.jpg",
+   "https://i.ibb.co/MD0DMwwW/Whats-App-Image-2025-12-29-at-4-22-37-PM.jpg",
+    "https://i.ibb.co/wFKP36YL/Whats-App-Image-2025-12-29-at-4-22-40-PM.jpg",
+    "https://i.ibb.co/6JDkspbY/Whats-App-Image-2025-12-29-at-4-22-41-PM.jpg",
+    "https://i.ibb.co/YBD2xNGg/Whats-App-Image-2025-12-29-at-4-22-40-PM-2.jpg"
+  
   ];
 
   return <GalleryPage images={allImages} />;

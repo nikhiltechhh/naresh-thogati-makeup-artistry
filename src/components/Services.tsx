@@ -5,12 +5,35 @@ interface Service {
   image: string;
 }
 
-interface ServicesProps {
-  services: Service[];
-}
-
-const Services = ({ services }: ServicesProps) => {
+const ServicesDemo = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [services] = useState<Service[]>([
+    {
+      title: "Bridal Makeup",
+      image: "https://i.ibb.co/G4QFgX5w/Naresh-Thogati-5.jpg"
+    },
+    {
+      title: "Cinematic Makeup",
+      image: "https://i.ibb.co/FbKYyYfD/Whats-App-Image-2025-12-29-at-4-22-40-PM-1.jpg"
+    },
+    {
+      title: "Prosthetic Transformations",
+      image: "https://i.ibb.co/0dHsTCz/Whats-App-Image-2025-12-29-at-4-22-43-PM.jpg"
+    },
+    {
+      title: "Fashion Shoots",
+      image: "https://i.ibb.co/5hZDDkpK/Whats-App-Image-2025-12-29-at-4-25-19-PM.jpg"
+    },
+    {
+      title: "Half Saree Makeup",
+      image: "https://i.ibb.co/XRCjvqC/Whats-App-Image-2025-12-29-at-4-25-18-PM-1.jpg"
+    },
+    {
+      title: "Model Shoots",
+      image: "https://i.ibb.co/MDzNSTrG/Whats-App-Image-2025-12-29-at-4-22-42-PM.jpg"
+    }
+  ]);
+  
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -34,18 +57,18 @@ const Services = ({ services }: ServicesProps) => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-secondary/30"
+      className="py-24 lg:py-32 bg-white"
     >
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div
-          className={`mb-16 transition-all duration-700 ${
+          className={`mb-16 text-center transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="section-subtitle">WHAT WE DO</p>
-          <h2 className="section-title">Services</h2>
-          <p className="body-italic mt-6 max-w-2xl">
+          <p className="text-sm font-semibold text-rose-600 tracking-widest uppercase mb-4">WHAT WE DO</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Services</h2>
+          <p className="text-lg text-gray-600 italic max-w-2xl mx-auto">
             Our main services include bridal makeup, cinematic makeup, prosthetic 
             transformations, fashion shoots, and occasion-based looks for every celebration.
           </p>
@@ -56,7 +79,7 @@ const Services = ({ services }: ServicesProps) => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative overflow-hidden bg-card rounded-lg shadow-soft hover:shadow-elegant transition-all duration-500 ${
+              className={`group relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
               style={{ transitionDelay: `${0.1 + index * 0.1}s` }}
@@ -66,29 +89,26 @@ const Services = ({ services }: ServicesProps) => {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Title Tab */}
-              <div className="absolute top-4 -right-2 bg-secondary/90 backdrop-blur-sm py-3 px-4 shadow-soft">
-                <p
-                  className="font-script text-sm text-foreground italic tracking-wide"
-                  style={{ writingMode: "vertical-rl" }}
-                >
+              {/* Title Tag - Attached to Top Border */}
+              <div className="absolute top-0 left-6 bg-white px-4 py-1.5 shadow-md rounded-b-md">
+                <p className="font-serif text-sm text-rose-600 font-semibold tracking-wide">
                   {service.title}
                 </p>
               </div>
 
               {/* Bottom Overlay on Hover */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-display text-xl text-primary-foreground mb-2">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="font-bold text-xl text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="font-body text-sm text-primary-foreground/80">
-                  Professional {service.title.toLowerCase()} services tailored to your needs.
+                <p className="text-white/90 text-sm leading-relaxed">
+                  Professional {service.title.toLowerCase()} services tailored to your unique style and needs.
                 </p>
               </div>
             </div>
@@ -99,4 +119,4 @@ const Services = ({ services }: ServicesProps) => {
   );
 };
 
-export default Services;
+export default ServicesDemo;

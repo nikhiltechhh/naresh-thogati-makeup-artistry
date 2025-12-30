@@ -37,7 +37,7 @@ const Hero = ({ heroImage }: HeroProps) => {
                 Naresh Thogati
               </h1>
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary font-light">
-                Makeup & Hair Stylist
+                Makeup Artist
               </h2>
             </div>
 
@@ -89,11 +89,12 @@ const Hero = ({ heroImage }: HeroProps) => {
               <div className="absolute -top-8 -left-8 w-32 h-32 border border-primary/20 rounded-full" />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full" />
               
-              <img
-                src={heroImage}
-                alt="Professional Makeup Artist"
-                className="relative z-10 w-full max-w-lg mx-auto object-cover rounded-tl-[100px] rounded-br-[100px] shadow-elegant"
-              />
+             <img
+  src="https://i.ibb.co/N6JnYKbH/Naresh-Thogati-2.jpg"
+  alt="Professional Makeup Artist"
+  className="relative z-10 w-full max-w-lg mx-auto object-cover max-h-[600px] rounded-tl-[100px] rounded-br-[100px] shadow-elegant"
+/>
+
             </div>
           </div>
         </div>

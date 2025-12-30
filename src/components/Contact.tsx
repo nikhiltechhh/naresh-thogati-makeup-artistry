@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,6 +21,30 @@ const Contact = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const socialLinks = [
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://www.instagram.com/sminkupofficial/",
+      color: "hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500",
+      hoverText: "hover:text-white"
+    },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      href: "https://www.facebook.com/sminkupofficial/",
+      color: "hover:bg-blue-600",
+      hoverText: "hover:text-white"
+    },
+    // {
+    //   name: "YouTube",
+    //   icon: Youtube,
+    //   href: "https://youtube.com",
+    //   color: "hover:bg-red-600",
+    //   hoverText: "hover:text-white"
+    // }
+  ];
 
   return (
     <section
@@ -68,7 +93,9 @@ const Contact = () => {
                 />
               </svg>
               <h3 className="font-body text-sm tracking-widest uppercase">Phone</h3>
-              <p className="font-script text-lg">+91 XXXXX XXXXX</p>
+              <a href="tel:+919948623938" className="font-script text-lg hover:opacity-80 transition-opacity">
+                +91 9948623938
+              </a>
             </div>
 
             <div className="flex flex-col items-center gap-3 p-6 border border-primary-foreground/20 rounded-lg hover:border-primary-foreground/40 transition-colors duration-300">
@@ -86,7 +113,9 @@ const Contact = () => {
                 />
               </svg>
               <h3 className="font-body text-sm tracking-widest uppercase">Email</h3>
-              <p className="font-script text-lg">contact@sminkup.com</p>
+              <a href="mailto:Naresh.Thogati@outlook.com" className="font-script text-lg hover:opacity-80 transition-opacity break-all">
+                Naresh.Thogati@outlook.com
+              </a>
             </div>
 
             <div className="flex flex-col items-center gap-3 p-6 border border-primary-foreground/20 rounded-lg hover:border-primary-foreground/40 transition-colors duration-300">
@@ -110,7 +139,11 @@ const Contact = () => {
                 />
               </svg>
               <h3 className="font-body text-sm tracking-widest uppercase">Location</h3>
-              <p className="font-script text-lg">Hyderabad, India</p>
+              <p className="font-script text-base leading-relaxed">
+                #8-3-222/1/D, Metro Pillar No: C1481,
+                Madhura Nagar Metro Station Exit Gate-A,
+                Madhura Nagar, Ameerpet, Hyderabad, TS-500873.
+              </p>
             </div>
           </div>
 
@@ -120,15 +153,24 @@ const Contact = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            {["Instagram", "Facebook", "YouTube"].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="w-12 h-12 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all duration-300"
-              >
-                <span className="font-body text-xs">{social[0]}</span>
-              </a>
-            ))}
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-14 h-14 rounded-full bg-primary-foreground/10 border-2 border-primary-foreground/30 flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-xl hover:border-transparent ${social.color} group`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <Icon 
+                    className={`w-6 h-6 text-primary-foreground transition-colors duration-300 ${social.hoverText}`}
+                    strokeWidth={2}
+                  />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

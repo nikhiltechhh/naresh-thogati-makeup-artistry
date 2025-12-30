@@ -18,14 +18,14 @@ const PortfolioPageWrapper = () => {
       title: "Traditional Bridal",
       category: "Bridal",
       description: "Elegant traditional bridal makeup with intricate details and timeless beauty.",
-      image: portfolio1,
+      image: "https://i.ibb.co/G4QFgX5w/Naresh-Thogati-5.jpg",
     },
-    {
-      title: "Reception Glamour",
-      category: "Party",
-      description: "Glamorous evening look perfect for reception parties and celebrations.",
-      image: portfolio2,
-    },
+    // {
+    //   title: "Reception Glamour",
+    //   category: "Party",
+    //   description: "Glamorous evening look perfect for reception parties and celebrations.",
+    //   image: portfolio2,
+    // },
     {
       title: "Editorial Fashion",
       category: "Fashion",
@@ -66,14 +66,14 @@ const PortfolioPageWrapper = () => {
       title: "Cinematic Look",
       category: "Cinematic",
       description: "Professional makeup for film and cinema productions.",
-      image: serviceCinematic,
+      image: "http://i.ibb.co/LdSRf2cn/Whats-App-Image-2025-12-29-at-4-25-06-PM.jpg",
     },
-    {
-      title: "Half Saree Ceremony",
-      category: "Traditional",
-      description: "Beautiful makeup for traditional half saree celebrations.",
-      image: serviceHalfsaree,
-    },
+    // {
+    //   title: "Half Saree Ceremony",
+    //   category: "Traditional",
+    //   description: "Beautiful makeup for traditional half saree celebrations.",
+    //   image: serviceHalfsaree,
+    // },
   ];
 
   return <PortfolioPage items={portfolioItems} />;
