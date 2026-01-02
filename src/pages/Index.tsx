@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
+import Bar from "@/components/Bar"
+import Bgv from "@/components/Bgv"
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Services from "@/components/Services";
+// import About from "@/components/About";
+
 import Gallery from "@/components/Gallery";
 // import Portfolio from "@/components/Portfolio";
 import Video from "@/components/Video";
@@ -9,6 +11,7 @@ import Specialization from "@/components/Specialization"
 import Choose from "@/components/Choose"
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Whatsapp from "@/components/Whatsapp";
 
 // Import images
 import heroImage from "@/assets/hero-image.jpg";
@@ -77,20 +80,22 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
+        <Bgv />
         <Hero heroImage={heroImage} />
-        <About
+        {/* <About
           aboutImage1={aboutMain}
           aboutImage2={about2}
           aboutImage3={about3}
-        />
+        /> */}
         <Specialization />
        
-        <Services />
+       
          <Choose />
         <Gallery />
         <Video />
         {/* <Portfolio items={portfolioItems} /> */}
         <Contact />
+        <Whatsapp />
       </main>
       <Footer />
     </div>

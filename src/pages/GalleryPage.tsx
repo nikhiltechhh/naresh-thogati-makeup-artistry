@@ -91,30 +91,55 @@ const GalleryPage = ({ images }: GalleryPageProps) => {
           className="fixed inset-0 z-50 bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setSelectedImage(null)}
         >
+          {/* Previous Arrow */}
           <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-background/20 hover:bg-background/40 flex items-center justify-center transition-colors duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = images.indexOf(selectedImage);
+              const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+              setSelectedImage(images[prevIndex]);
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/90 flex items-center justify-center hover:bg-background transition shadow-elegant"
           >
-            <svg
-              className="w-6 h-6 text-background"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+            <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+
           <img
             src={selectedImage}
             alt="Gallery preview"
             className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-elegant animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           />
+
+          {/* Next Arrow */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = images.indexOf(selectedImage);
+              const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+              setSelectedImage(images[nextIndex]);
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/90 flex items-center justify-center hover:bg-background transition shadow-elegant"
+          >
+            <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Close Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/90 flex items-center justify-center hover:bg-background transition shadow-elegant"
+          >
+            <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
     </div>

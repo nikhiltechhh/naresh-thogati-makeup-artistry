@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import tmn from "@/assets/tmnn.jpg";
 
-interface AboutProps {
-  aboutImage1: string;
-  aboutImage2: string;
-  aboutImage3: string;
-}
-
-const About = ({ aboutImage1, aboutImage2, aboutImage3 }: AboutProps) => {
+const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isBottomImageVisible, setIsBottomImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const bottomImageRef = useRef(null);
+
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const bottomImageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,13 +41,11 @@ const About = ({ aboutImage1, aboutImage2, aboutImage3 }: AboutProps) => {
     };
   }, []);
 
-
-
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="py-20 bg-gradient-to-b from-white to-rose-50"
+      className="py-20 bg-gradient-to-b from-white to-rose-50 mt-32"
     >
       {/* Section Header */}
       <div
@@ -72,7 +65,7 @@ const About = ({ aboutImage1, aboutImage2, aboutImage3 }: AboutProps) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
-          {/* Left Content - Paragraphs (Now takes more space) */}
+          {/* Left Content */}
           <div
             className={`lg:col-span-2 space-y-6 transition-all duration-1000 delay-200 ${
               isVisible
@@ -86,12 +79,14 @@ const About = ({ aboutImage1, aboutImage2, aboutImage3 }: AboutProps) => {
               understanding of facial aesthetics. My passion lies in enhancing
               natural beauty while bringing every client's vision to life.
             </p>
+
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
               With hands-on experience in Bridal Makeup, Movie & Cinematic
               Makeup, Prosthetic Makeup, Fashion & Party Looks, I work with
               high-quality products and advanced techniques to deliver flawless,
               long-lasting results for every occasion.
             </p>
+
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
               From elegant bridal transformations to bold character-driven
               prosthetic creations, I believe makeup is not just beauty—it's
@@ -119,22 +114,13 @@ const About = ({ aboutImage1, aboutImage2, aboutImage3 }: AboutProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
-            {/* Secondary Images */}
-            <div className="space-y-4">
-              {/* <div className="rounded-xl overflow-hidden shadow-lg group">
-                <img
-                  src="https://i.ibb.co/G4QFgX5w/Naresh-Thogati-5.jpg"
-                  alt="Makeup Work 1"
-                  className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div> */}
-              <div className="rounded-xl overflow-hidden shadow-lg group">
-                <img
-                  src="https://i.ibb.co/yn3dTs97/Naresh-Thogati-6.jpg"
-                  alt="Makeup Work 2"
-                  className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+            {/* Secondary Image */}
+            <div className="rounded-xl overflow-hidden shadow-lg group">
+              <img
+                src="https://i.ibb.co/yn3dTs97/Naresh-Thogati-6.jpg"
+                alt="Makeup Work 2"
+                className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>

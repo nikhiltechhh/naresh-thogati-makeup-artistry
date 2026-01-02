@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HeroProps {
   heroImage: string;
@@ -6,18 +7,12 @@ interface HeroProps {
 
 const Hero = ({ heroImage }: HeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
-
-  const scrollToServices = () => {
-    const element = document.getElementById("services");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -33,9 +28,7 @@ const Hero = ({ heroImage }: HeroProps) => {
             }`}
           >
             <div className="space-y-4">
-              <h1 className="hero-title">
-                Naresh Thogati
-              </h1>
+              <h1 className="hero-title">Naresh Thogati</h1>
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary font-light">
                 Makeup Artist
               </h2>
@@ -48,12 +41,13 @@ const Hero = ({ heroImage }: HeroProps) => {
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
               }}
             >
-              Hello, I'm Naresh Thogati! I believe every face is a canvas, and my passion 
+              Hello, I'm Naresh Thogati! I believe every face is a canvas, and my passion
               is creating looks that make you feel confident, radiant, and unforgettable.
             </p>
 
+            {/* 🔽 ONLY CHANGE IS HERE */}
             <button
-              onClick={scrollToServices}
+              onClick={() => navigate("/services")}
               className="group inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-widest uppercase transition-all duration-500 hover:bg-primary/90 hover:shadow-elegant"
               style={{
                 opacity: isVisible ? 1 : 0,
@@ -85,16 +79,14 @@ const Hero = ({ heroImage }: HeroProps) => {
             }`}
           >
             <div className="relative">
-              {/* Decorative elements */}
               <div className="absolute -top-8 -left-8 w-32 h-32 border border-primary/20 rounded-full" />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full" />
-              
-             <img
-  src="https://i.ibb.co/N6JnYKbH/Naresh-Thogati-2.jpg"
-  alt="Professional Makeup Artist"
-  className="relative z-10 w-full max-w-lg mx-auto object-cover max-h-[600px] rounded-tl-[100px] rounded-br-[100px] shadow-elegant"
-/>
 
+              <img
+                src="https://i.ibb.co/N6JnYKbH/Naresh-Thogati-2.jpg"
+                alt="Professional Makeup Artist"
+                className="relative z-10 w-full max-w-lg mx-auto object-cover max-h-[600px] rounded-tl-[100px] rounded-br-[100px] shadow-elegant"
+              />
             </div>
           </div>
         </div>
